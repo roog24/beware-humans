@@ -1,0 +1,6 @@
+{
+  "name": "좀비 아포칼립스 도감",
+  "description": "한국 좀비 아포칼립스 세계관의 인물 및 구역 정보 사진첩 앱",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
