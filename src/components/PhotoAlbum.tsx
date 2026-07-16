@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -88,6 +88,18 @@ const CUSTOM_PHOTOS = [
 
 export default function PhotoAlbum({ onBack }: Props) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [showOverlay, setShowOverlay] = useState(true);
+
+  useEffect(() => {
+    if (selectedIndex !== null) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [selectedIndex]);
 
   const allPhotos = CUSTOM_PHOTOS;
 
@@ -128,7 +140,10 @@ export default function PhotoAlbum({ onBack }: Props) {
           <div 
             key={idx} 
             className="aspect-square rounded-xl overflow-hidden bg-gray-100 cursor-pointer shadow-sm hover:shadow-md transition-shadow"
-            onClick={() => setSelectedIndex(idx)}
+            onClick={() => {
+              setSelectedIndex(idx);
+              setShowOverlay(true);
+            }}
           >
             <img 
               src={photo.url} 
@@ -163,38 +178,53 @@ export default function PhotoAlbum({ onBack }: Props) {
                   alt={allPhotos[selectedIndex].characterName}
                   className="w-full h-full object-contain sm:rounded-xl shadow-2xl"
                   referrerPolicy="no-referrer"
-                  onClick={(e) => e.stopPropagation()}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowOverlay(!showOverlay);
+                  }}
                 />
               </AnimatePresence>
             </div>
 
-            {/* Top Bar */}
-            <div className="absolute top-0 inset-x-0 p-4 flex justify-between items-start pointer-events-none bg-gradient-to-b from-black/50 to-transparent">
-              <div className="text-white/90 font-medium text-sm bg-black/40 px-3 py-1.5 rounded-full backdrop-blur-md pointer-events-auto">
-                {allPhotos[selectedIndex].characterName} ({selectedIndex + 1} / {allPhotos.length})
-              </div>
-              <button 
-                className="text-white/80 hover:text-white bg-black/50 p-2 rounded-full backdrop-blur-md pointer-events-auto transition-colors"
-                onClick={(e) => { e.stopPropagation(); setSelectedIndex(null); }}
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </div>
+            {/* UI Overlay */}
+            <AnimatePresence>
+              {showOverlay && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="absolute inset-0 pointer-events-none"
+                >
+                  {/* Top Bar */}
+                  <div className="absolute top-0 inset-x-0 p-4 flex justify-between items-start bg-gradient-to-b from-black/50 to-transparent">
+                    <div className="text-white/90 font-medium text-sm bg-black/40 px-3 py-1.5 rounded-full backdrop-blur-md pointer-events-auto">
+                      {allPhotos[selectedIndex].characterName} ({selectedIndex + 1} / {allPhotos.length})
+                    </div>
+                    <button 
+                      className="text-white/80 hover:text-white bg-black/50 p-2 rounded-full backdrop-blur-md pointer-events-auto transition-colors"
+                      onClick={(e) => { e.stopPropagation(); setSelectedIndex(null); }}
+                    >
+                      <X className="w-6 h-6" />
+                    </button>
+                  </div>
 
-            {/* Navigation Buttons */}
-            <button 
-              className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full backdrop-blur-md transition-colors flex items-center justify-center w-12 h-12 shadow-lg"
-              onClick={handlePrevious}
-            >
-              <ChevronLeft className="w-6 h-6 ml-[-2px]" />
-            </button>
-            
-            <button 
-              className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full backdrop-blur-md transition-colors flex items-center justify-center w-12 h-12 shadow-lg"
-              onClick={handleNext}
-            >
-              <ChevronRight className="w-6 h-6 mr-[-2px]" />
-            </button>
+                  {/* Navigation Buttons */}
+                  <button 
+                    className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full backdrop-blur-md transition-colors flex items-center justify-center w-12 h-12 shadow-lg pointer-events-auto"
+                    onClick={handlePrevious}
+                  >
+                    <ChevronLeft className="w-6 h-6 ml-[-2px]" />
+                  </button>
+                  
+                  <button 
+                    className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full backdrop-blur-md transition-colors flex items-center justify-center w-12 h-12 shadow-lg pointer-events-auto"
+                    onClick={handleNext}
+                  >
+                    <ChevronRight className="w-6 h-6 mr-[-2px]" />
+                  </button>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
         )}
       </AnimatePresence>

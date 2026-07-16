@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Character, Relationship } from '../types';
 import { CHARACTERS } from '../data';
-import { ChevronLeft, Image as ImageIcon, Info, Lock, Quote, Users, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Image as ImageIcon, Info, Lock, Quote, Users, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import CharacterThemePlayer from './CharacterThemePlayer';
 
@@ -15,7 +15,21 @@ interface Props {
 export default function CharacterDetail({ character, onBack, onNavigateToCharacter }: Props) {
   const [activeRel, setActiveRel] = useState<Relationship | null>(null);
   const [isSecretUnlocked, setIsSecretUnlocked] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [showOverlay, setShowOverlay] = useState(true);
+
+  useEffect(() => {
+    if (selectedImageIndex !== null) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [selectedImageIndex]);
+
+  const allImages = [character.imageUrl, ...(character.gallery || [])].filter(Boolean) as string[];
 
   const getTargetImage = (id: string) => {
     const found = CHARACTERS.find(c => c.id === id);
@@ -56,7 +70,12 @@ export default function CharacterDetail({ character, onBack, onNavigateToCharact
               className="max-w-full h-auto rounded-2xl shadow-sm cursor-pointer hover:opacity-90 transition-opacity" 
               style={{ maxHeight: '60vh' }} 
               referrerPolicy="no-referrer"
-              onClick={() => setSelectedImage(character.imageUrl!)}
+              onClick={() => {
+                if (character.imageUrl) {
+                  setSelectedImageIndex(0);
+                  setShowOverlay(true);
+                }
+              }}
             />
           ) : (
             <div className={`w-32 h-32 rounded-full shadow-sm flex items-center justify-center text-4xl font-bold overflow-hidden ${character.color}`}>
@@ -193,7 +212,11 @@ export default function CharacterDetail({ character, onBack, onNavigateToCharact
                 <div 
                   key={idx}
                   className="aspect-square rounded-xl overflow-hidden cursor-pointer bg-gray-100 border border-gray-200"
-                  onClick={() => setSelectedImage(imgUrl)}
+                  onClick={() => {
+                    const offset = character.imageUrl ? 1 : 0;
+                    setSelectedImageIndex(idx + offset);
+                    setShowOverlay(true);
+                  }}
                 >
                   <img src={imgUrl} alt={`${character.name} 사진 ${idx + 1}`} className="w-full h-full object-cover hover:scale-110 transition-transform duration-300" referrerPolicy="no-referrer" />
                 </div>
@@ -255,29 +278,70 @@ export default function CharacterDetail({ character, onBack, onNavigateToCharact
 
       {/* Full Image Modal */}
       <AnimatePresence>
-        {selectedImage && (
+        {selectedImageIndex !== null && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black/90 z-[60] flex items-center justify-center p-4 backdrop-blur-md"
-            onClick={() => setSelectedImage(null)}
+            onClick={() => setSelectedImageIndex(null)}
           >
-            <button
-              className="absolute top-4 right-4 p-2 text-white bg-black/50 rounded-full hover:bg-black/80 transition-colors z-[70]"
-              onClick={() => setSelectedImage(null)}
-            >
-              <X className="w-6 h-6" />
-            </button>
+            <AnimatePresence>
+              {showOverlay && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="absolute inset-0 pointer-events-none"
+                >
+                  <button
+                    className="absolute top-4 right-4 p-2 text-white bg-black/50 rounded-full hover:bg-black/80 transition-colors z-[70] pointer-events-auto"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedImageIndex(null);
+                    }}
+                  >
+                    <X className="w-6 h-6" />
+                  </button>
+                  
+                  {allImages.length > 1 && (
+                    <>
+                      <button 
+                        className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full backdrop-blur-md transition-colors flex items-center justify-center w-12 h-12 shadow-lg pointer-events-auto"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedImageIndex(prev => prev === null ? null : (prev === 0 ? allImages.length - 1 : prev - 1));
+                        }}
+                      >
+                        <ChevronLeft className="w-6 h-6 ml-[-2px]" />
+                      </button>
+                      
+                      <button 
+                        className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full backdrop-blur-md transition-colors flex items-center justify-center w-12 h-12 shadow-lg pointer-events-auto"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedImageIndex(prev => prev === null ? null : (prev + 1) % allImages.length);
+                        }}
+                      >
+                        <ChevronRight className="w-6 h-6 mr-[-2px]" />
+                      </button>
+                    </>
+                  )}
+                </motion.div>
+              )}
+            </AnimatePresence>
             <motion.img
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.9 }}
-              src={selectedImage}
+              src={allImages[selectedImageIndex]}
               alt="확대된 사진"
               className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"
               referrerPolicy="no-referrer"
-              onClick={(e: React.MouseEvent) => e.stopPropagation()}
+              onClick={(e: React.MouseEvent) => {
+                e.stopPropagation();
+                setShowOverlay(!showOverlay);
+              }}
             />
           </motion.div>
         )}
