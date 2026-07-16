@@ -42,24 +42,40 @@ export default function App() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   
-  // Navigation stack for back button to know where to return
-  const [history, setHistory] = useState<HistoryState[]>([]);
+  useEffect(() => {
+    const handlePopState = (e: PopStateEvent) => {
+      if (e.state) {
+        setView(e.state.view);
+        setSelectedId(e.state.id);
+      } else {
+        setView('home');
+        setSelectedId(null);
+      }
+    };
+    
+    window.addEventListener('popstate', handlePopState);
+    
+    if (!window.history.state) {
+      window.history.replaceState({ view: 'home', id: null }, "");
+    } else {
+       setView(window.history.state.view || 'home');
+       setSelectedId(window.history.state.id || null);
+    }
+    
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   const navigateTo = (newView: ViewState, id: string | null = null) => {
-    setHistory(prev => [...prev, { view, id: selectedId }]);
+    window.history.pushState({ view: newView, id }, "");
     setView(newView);
-    if (id) setSelectedId(id);
+    setSelectedId(id);
     if (newView !== 'home') {
       setSearchQuery('');
     }
   };
 
   const navigateBack = () => {
-    if (history.length === 0) return;
-    const prevState = history[history.length - 1];
-    setHistory(prev => prev.slice(0, -1));
-    setView(prevState.view);
-    setSelectedId(prevState.id);
+    window.history.back();
   };
 
   const selectedCharacter = CHARACTERS.find(c => c.id === selectedId);
