@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Play, Pause, Music, X, ListMusic, Repeat, Repeat1, FileText, SkipBack, SkipForward } from 'lucide-react';
+import { Play, Pause, Music, X, ListMusic, Repeat, Repeat1, FileText, SkipBack, SkipForward, Loader2 } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import { CHARACTERS } from '../data';
 import { LYRICS } from '../lyrics';
@@ -21,6 +21,7 @@ const PLAYLIST = [
 
 export default function AudioPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [repeatMode, setRepeatMode] = useState<'all' | 'one'>('all');
@@ -166,6 +167,11 @@ export default function AudioPlayer() {
       window.dispatchEvent(new CustomEvent('global-audio-state', { detail: { isPlaying: !audio.paused, trackId: PLAYLIST[currentTrackIndex].id } }));
     };
 
+    const handleWaiting = () => setIsLoading(true);
+    const handleCanPlay = () => setIsLoading(false);
+    const handlePlaying = () => setIsLoading(false);
+    const handleLoadStart = () => setIsLoading(true);
+
     const handlePlayCharacterTheme = (e: Event) => {
       const customEvent = e as CustomEvent<{ characterId: string }>;
       const trackIndex = PLAYLIST.findIndex(t => t.id === customEvent.detail.characterId);
@@ -190,6 +196,10 @@ export default function AudioPlayer() {
     audio.addEventListener('play', handlePlay);
     audio.addEventListener('timeupdate', handleTimeUpdate);
     audio.addEventListener('loadedmetadata', handleLoadedMetadata);
+    audio.addEventListener('waiting', handleWaiting);
+    audio.addEventListener('canplay', handleCanPlay);
+    audio.addEventListener('playing', handlePlaying);
+    audio.addEventListener('loadstart', handleLoadStart);
     window.addEventListener('request-audio-state', handleRequestState);
     window.addEventListener('play-character-theme', handlePlayCharacterTheme);
 
@@ -199,6 +209,10 @@ export default function AudioPlayer() {
       audio.removeEventListener('play', handlePlay);
       audio.removeEventListener('timeupdate', handleTimeUpdate);
       audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      audio.removeEventListener('waiting', handleWaiting);
+      audio.removeEventListener('canplay', handleCanPlay);
+      audio.removeEventListener('playing', handlePlaying);
+      audio.removeEventListener('loadstart', handleLoadStart);
       window.removeEventListener('request-audio-state', handleRequestState);
       window.removeEventListener('play-character-theme', handlePlayCharacterTheme);
     };
@@ -209,6 +223,7 @@ export default function AudioPlayer() {
       <audio
         ref={audioRef}
         src={currentTrack.url}
+        preload="auto"
       />
       
       <AnimatePresence>
@@ -246,7 +261,7 @@ export default function AudioPlayer() {
                     onClick={togglePlay}
                     className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:scale-105 active:scale-95 transition-transform"
                   >
-                    {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
+                    {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : (isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />)}
                   </button>
                   <button 
                     onClick={playNextTrack}
