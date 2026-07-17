@@ -7,7 +7,9 @@ import { History } from 'lucide-react';
 import CharacterDetail from './components/CharacterDetail';
 import ZoneDetail from './components/ZoneDetail';
 import AudioPlayer from './components/AudioPlayer';
-import { FolderHeart, Map, Search, X, MapPin } from 'lucide-react';
+import IntroScreen from './components/IntroScreen';
+import CommunityBoard from './components/CommunityBoard';
+import { FolderHeart, Map, Search, X, MapPin, MessageSquare } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 
 function ImagePreloader() {
@@ -41,6 +43,8 @@ export default function App() {
   const [view, setView] = useState<ViewState>('home');
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [showIntro, setShowIntro] = useState(true);
+  const [showCommunityBoard, setShowCommunityBoard] = useState(false);
   
   useEffect(() => {
     const handlePopState = (e: PopStateEvent) => {
@@ -86,6 +90,11 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-blue-100 pb-32">
+      <AnimatePresence>
+        {showIntro && <IntroScreen onComplete={() => setShowIntro(false)} />}
+        {showCommunityBoard && <CommunityBoard onClose={() => setShowCommunityBoard(false)} />}
+      </AnimatePresence>
+
       <ImagePreloader />
       {/* Background Audio */}
       <AudioPlayer />
@@ -93,7 +102,16 @@ export default function App() {
       {/* Home View */}
       <div className={`p-6 ${view !== 'home' ? 'hidden' : 'block'}`}>
         <header className="mb-8 mt-4">
-          <h1 className="text-3xl font-bold tracking-tight mb-2">앨범</h1>
+          <div className="flex justify-between items-center mb-4">
+            <h1 className="text-3xl font-bold tracking-tight mb-0">앨범</h1>
+            <button
+              onClick={() => setShowCommunityBoard(true)}
+              className="px-3 py-1.5 text-xs font-bold bg-neutral-900 text-white rounded-md flex items-center gap-1.5 hover:bg-neutral-800 transition-colors uppercase tracking-wider"
+            >
+              <MessageSquare className="w-4 h-4" />
+              Alive
+            </button>
+          </div>
           <div className="relative flex items-center">
             <Search className="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
             <input 

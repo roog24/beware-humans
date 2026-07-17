@@ -83,22 +83,19 @@ export default function AudioPlayer() {
       return;
     }
     
-    // If audio is currently playing, pause it first before changing the track
-    // This helps prevent "The play() request was interrupted by a new load request"
-    if (audioRef.current && !audioRef.current.paused) {
-      audioRef.current.pause();
-    }
-    
     setCurrentTrackIndex(index);
-    setIsPlaying(true);
-    setTimeout(() => {
-      if (audioRef.current) {
-        const playPromise = audioRef.current.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(err => console.log('Play prevented:', err));
-        }
+    if (audioRef.current) {
+      audioRef.current.src = PLAYLIST[index].url;
+      audioRef.current.load();
+      setIsPlaying(true);
+      const playPromise = audioRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(err => {
+            console.log('Play prevented:', err);
+            setIsPlaying(false);
+        });
       }
-    }, 50);
+    }
   };
 
   const toggleRepeatMode = (e: React.MouseEvent) => {
@@ -135,6 +132,14 @@ export default function AudioPlayer() {
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
+
+
+  // Set initial src to prevent React from managing it and interrupting play
+  useEffect(() => {
+    if (audioRef.current && !audioRef.current.src) {
+      audioRef.current.src = PLAYLIST[0].url;
+    }
+  }, []);
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -173,17 +178,35 @@ export default function AudioPlayer() {
     const handleLoadStart = () => setIsLoading(true);
 
     const handlePlayCharacterTheme = (e: Event) => {
-      const customEvent = e as CustomEvent<{ characterId: string }>;
+      const customEvent = e as CustomEvent<{ characterId: string, forcePlay?: boolean }>;
       const trackIndex = PLAYLIST.findIndex(t => t.id === customEvent.detail.characterId);
       if (trackIndex !== -1) {
         if (trackIndex === currentTrackIndex) {
-          if (audio.paused) {
-             const playPromise = audio.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(err => console.log("Play prevented:", err));
-        }
+          if (customEvent.detail.forcePlay) {
+             setIsPlaying(true);
+             if (audioRef.current) {
+                 const playPromise = audioRef.current.play();
+                 if (playPromise !== undefined) {
+                     playPromise.catch(err => {
+                         console.log("Play prevented:", err);
+                         setIsPlaying(false);
+                     });
+                 }
+             }
           } else {
-             audio.pause();
+              if (audioRef.current && audioRef.current.paused) {
+                  setIsPlaying(true);
+                 const playPromise = audioRef.current.play();
+                 if (playPromise !== undefined) {
+                   playPromise.catch(err => {
+                     console.log("Play prevented:", err);
+                     setIsPlaying(false);
+                   });
+                 }
+              } else if (audioRef.current && !audioRef.current.paused) {
+                  audioRef.current.pause();
+                 setIsPlaying(false);
+              }
           }
         } else {
           playTrack(trackIndex);
@@ -222,8 +245,8 @@ export default function AudioPlayer() {
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
       <audio
         ref={audioRef}
-        src={currentTrack.url}
-        preload="auto"
+                preload="auto"
+                playsInline
       />
       
       <AnimatePresence>
@@ -316,10 +339,10 @@ export default function AudioPlayer() {
                 </div>
               ) : (
                 PLAYLIST.map((track, idx) => (
-                  <div 
+                  <button 
                     key={track.id}
                     onClick={() => playTrack(idx)}
-                    className={`px-4 py-2.5 flex items-center gap-3 cursor-pointer hover:bg-gray-800/50 transition-colors ${
+                    className={`w-full text-left px-4 py-2.5 flex items-center gap-3 cursor-pointer hover:bg-gray-800/50 transition-colors ${
                       idx === currentTrackIndex ? 'bg-gray-800/30' : ''
                     }`}
                   >
@@ -344,7 +367,7 @@ export default function AudioPlayer() {
                       </span>
                       <span className="text-[10px] text-gray-500 truncate">{track.artist}</span>
                     </div>
-                  </div>
+                  </button>
                 ))
               )}
             </div>

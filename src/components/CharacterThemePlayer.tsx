@@ -30,8 +30,21 @@ export default function CharacterThemePlayer({ themeSongName, characterName, cha
   }, [characterId]);
 
   const togglePlay = (e: React.MouseEvent) => {
+    e.preventDefault();
     e.stopPropagation();
-    window.dispatchEvent(new CustomEvent('play-character-theme', { detail: { characterId } }));
+    
+    if ((window as any).playGlobalAudio) {
+        (window as any).playGlobalAudio(characterId);
+    } else {
+        window.dispatchEvent(new CustomEvent('play-character-theme', { detail: { characterId } }));
+    }
+    
+    // Fallback
+    const audioEl = document.querySelector('audio');
+    if (audioEl) {
+        const p = audioEl.play();
+        if (p !== undefined) p.catch(()=>{});
+    }
   };
 
   return (

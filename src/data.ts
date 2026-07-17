@@ -128,7 +128,7 @@ export const CHARACTERS: Character[] = [
     name: '정해운',
     affiliation: '세이프 존 2계급 (선임 연구원)',
     color: 'bg-rose-100 text-rose-900',
-    imageUrl: 'https://i.postimg.cc/3JTkGrFk/jeonghaeun.png',
+    imageUrl: 'https://i.postimg.cc/269C617R/jeonghaeun.png',
     gallery: [
       'https://i.postimg.cc/W1VMwL0F/jeonghaeun-gippeum.png',
       'https://i.postimg.cc/jjgPTDmr/jeonghaeun-nunmul.png',
@@ -171,12 +171,12 @@ export const CHARACTERS: Character[] = [
     color: 'bg-amber-500 text-amber-50',
     imageUrl: 'https://i.postimg.cc/bv00DMQY/han-yuhwan.png',
     gallery: [
-      'https://i.postimg.cc/FR1rtz5n/han-yuhwan-gippeum.png',
-      'https://i.postimg.cc/59hC3d8q/han-yuhwan-nunmul.png',
-      'https://i.postimg.cc/nVyDkbqv/han-yuhwan-danghwang.png',
-      'https://i.postimg.cc/fWG9KnYW/han-yuhwan-mupyojeong.png',
-      'https://i.postimg.cc/zDsgjZTC/han-yuhwan-seulpeum.png',
-      'https://i.postimg.cc/pLx5wf01/han-yuhwan-hwanam.png'
+      'https://i.postimg.cc/5NcJjWWk/han-yuhwan-gippeum.png',
+      'https://i.postimg.cc/66nSj7Fv/han-yuhwan-nunmul.png',
+      'https://i.postimg.cc/c1wj9KPf/han-yuhwan-danghwang.png',
+      'https://i.postimg.cc/y6c5QJ28/han-yuhwan-mupyojeong.png',
+      'https://i.postimg.cc/HWXKZJFB/han-yuhwan-seulpeum.png',
+      'https://i.postimg.cc/HLFZ3H2w/han-yuhwan-hwanam.png'
     ,
       'https://i.postimg.cc/2jc86W79/han-yuhwan-1.png',
       'https://i.postimg.cc/pX3WQt7m/han-yuhwan-2.png',
@@ -189,7 +189,7 @@ export const CHARACTERS: Character[] = [
     themeSongUrl: 'https://raw.githubusercontent.com/roog24/11/main/%ED%95%9C%EC%9C%A0%ED%99%98%20-%20%EC%97%90%EB%8D%B4%EC%9D%98%20%ED%83%9C%EC%96%91.mp3',
     quote: '"혼자 살아남는 건 생존이 아니라 지옥이야."',
     info: [
-      '나이: 34세',
+      '나이: 37세',
       '신체: 181cm',
       '성향: ESFJ, 쾌활함, 올곧은 신념',
       '특징: 에덴의 리더이자 정신적 지주. 앞장서서 노약자를 돕는 태양 같은 인물.'
