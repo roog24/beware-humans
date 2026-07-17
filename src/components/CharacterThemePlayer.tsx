@@ -48,7 +48,7 @@ export default function CharacterThemePlayer({ themeSongName, characterName, cha
   };
 
   return (
-    <div className="bg-gray-100 rounded-2xl p-4 flex items-center justify-between mb-6 shadow-sm border border-gray-200">
+    <div className="bg-gray-50 rounded-2xl p-4 flex items-center justify-between mb-6 shadow-sm border border-gray-200">
       <div className="flex items-center gap-3">
         <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm relative overflow-hidden">
           <Music className="w-4 h-4 text-blue-500" />
@@ -65,7 +65,7 @@ export default function CharacterThemePlayer({ themeSongName, characterName, cha
       </div>
       <button 
         onClick={togglePlay}
-        className="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center hover:scale-105 active:scale-95 transition-transform shrink-0 shadow-md"
+        className="w-10 h-10 rounded-full bg-blue-500 text-gray-900 flex items-center justify-center hover:scale-105 active:scale-95 transition-transform shrink-0 shadow-md"
       >
         {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
       </button>

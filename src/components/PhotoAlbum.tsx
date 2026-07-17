@@ -139,7 +139,7 @@ export default function PhotoAlbum({ onBack }: Props) {
         {allPhotos.map((photo, idx) => (
           <div 
             key={idx} 
-            className="aspect-square rounded-xl overflow-hidden bg-gray-100 cursor-pointer shadow-sm hover:shadow-md transition-shadow"
+            className="aspect-square rounded-xl overflow-hidden bg-gray-50 cursor-pointer shadow-sm hover:shadow-md transition-shadow"
             onClick={() => {
               setSelectedIndex(idx);
               setShowOverlay(true);
@@ -197,11 +197,11 @@ export default function PhotoAlbum({ onBack }: Props) {
                 >
                   {/* Top Bar */}
                   <div className="absolute top-0 inset-x-0 p-4 flex justify-between items-start bg-gradient-to-b from-black/50 to-transparent">
-                    <div className="text-white/90 font-medium text-sm bg-black/40 px-3 py-1.5 rounded-full backdrop-blur-md pointer-events-auto">
+                    <div className="text-gray-900/90 font-medium text-sm bg-black/40 px-3 py-1.5 rounded-full backdrop-blur-md pointer-events-auto">
                       {allPhotos[selectedIndex].characterName} ({selectedIndex + 1} / {allPhotos.length})
                     </div>
                     <button 
-                      className="text-white/80 hover:text-white bg-black/50 p-2 rounded-full backdrop-blur-md pointer-events-auto transition-colors"
+                      className="text-gray-900/80 hover:text-gray-900 bg-black/50 p-2 rounded-full backdrop-blur-md pointer-events-auto transition-colors"
                       onClick={(e) => { e.stopPropagation(); setSelectedIndex(null); }}
                     >
                       <X className="w-6 h-6" />
@@ -210,14 +210,14 @@ export default function PhotoAlbum({ onBack }: Props) {
 
                   {/* Navigation Buttons */}
                   <button 
-                    className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full backdrop-blur-md transition-colors flex items-center justify-center w-12 h-12 shadow-lg pointer-events-auto"
+                    className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-gray-900 p-3 rounded-full backdrop-blur-md transition-colors flex items-center justify-center w-12 h-12 shadow-lg pointer-events-auto"
                     onClick={handlePrevious}
                   >
                     <ChevronLeft className="w-6 h-6 ml-[-2px]" />
                   </button>
                   
                   <button 
-                    className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full backdrop-blur-md transition-colors flex items-center justify-center w-12 h-12 shadow-lg pointer-events-auto"
+                    className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-gray-900 p-3 rounded-full backdrop-blur-md transition-colors flex items-center justify-center w-12 h-12 shadow-lg pointer-events-auto"
                     onClick={handleNext}
                   >
                     <ChevronRight className="w-6 h-6 mr-[-2px]" />

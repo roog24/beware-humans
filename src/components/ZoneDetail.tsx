@@ -80,7 +80,7 @@ export default function ZoneDetail({ zone, onBack, onNavigateToCharacter }: Prop
 
         {/* Info Section */}
         <div className="mb-8 mt-6">
-          <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3 flex items-center">
+          <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center">
             <Info className="w-4 h-4 mr-2" />
             구역 설명
           </h3>
@@ -88,7 +88,7 @@ export default function ZoneDetail({ zone, onBack, onNavigateToCharacter }: Prop
             <ul className="space-y-2">
               {zone.description.map((desc, idx) => (
                 <li key={idx} className="text-sm text-gray-700 leading-relaxed flex items-start">
-                  <span className="text-gray-400 mr-2 mt-0.5">•</span>
+                  <span className="text-gray-500 mr-2 mt-0.5">•</span>
                   <span>{desc}</span>
                 </li>
               ))}
@@ -98,7 +98,7 @@ export default function ZoneDetail({ zone, onBack, onNavigateToCharacter }: Prop
 
         {/* Visuals Section */}
         <div className="mb-8">
-          <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3 flex items-center">
+          <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center">
             <MapPin className="w-4 h-4 mr-2" />
             환경 및 특징
           </h3>
@@ -116,7 +116,7 @@ export default function ZoneDetail({ zone, onBack, onNavigateToCharacter }: Prop
         {/* Associated Characters */}
         {chars.length > 0 && (
           <div>
-            <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3 flex items-center">
+            <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center">
               <Users className="w-4 h-4 mr-2" />
               소속 인물
             </h3>
@@ -163,7 +163,7 @@ export default function ZoneDetail({ zone, onBack, onNavigateToCharacter }: Prop
                   className="absolute inset-0 pointer-events-none"
                 >
                   <button
-                    className="absolute top-4 right-4 p-2 text-white bg-black/50 rounded-full hover:bg-black/80 transition-colors z-[70] pointer-events-auto"
+                    className="absolute top-4 right-4 p-2 text-gray-900 bg-black/50 rounded-full hover:bg-black/80 transition-colors z-[70] pointer-events-auto"
                     onClick={(e) => {
                       e.stopPropagation();
                       setSelectedImageIndex(null);
@@ -175,7 +175,7 @@ export default function ZoneDetail({ zone, onBack, onNavigateToCharacter }: Prop
                   {allImages.length > 1 && (
                     <>
                       <button 
-                        className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full backdrop-blur-md transition-colors flex items-center justify-center w-12 h-12 shadow-lg pointer-events-auto"
+                        className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-gray-900 p-3 rounded-full backdrop-blur-md transition-colors flex items-center justify-center w-12 h-12 shadow-lg pointer-events-auto"
                         onClick={(e) => {
                           e.stopPropagation();
                           setSelectedImageIndex(prev => prev === null ? null : (prev === 0 ? allImages.length - 1 : prev - 1));
@@ -185,7 +185,7 @@ export default function ZoneDetail({ zone, onBack, onNavigateToCharacter }: Prop
                       </button>
                       
                       <button 
-                        className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full backdrop-blur-md transition-colors flex items-center justify-center w-12 h-12 shadow-lg pointer-events-auto"
+                        className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-gray-900 p-3 rounded-full backdrop-blur-md transition-colors flex items-center justify-center w-12 h-12 shadow-lg pointer-events-auto"
                         onClick={(e) => {
                           e.stopPropagation();
                           setSelectedImageIndex(prev => prev === null ? null : (prev + 1) % allImages.length);

@@ -39,7 +39,7 @@ export default function CharacterDetail({ character, onBack, onNavigateToCharact
   const getTargetColor = (id: string) => {
     // If it's a generic target, give a default color, else find the char color
     const found = CHARACTERS.find(c => c.id === id);
-    return found ? found.color : 'bg-gray-200 text-gray-700';
+    return found ? found.color : 'bg-gray-100 text-gray-700';
   };
 
   const getInitials = (name: string) => name.substring(0, 1);
@@ -110,13 +110,13 @@ export default function CharacterDetail({ character, onBack, onNavigateToCharact
 
         {/* Info Section */}
         <div className="mb-8">
-          <h2 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3 flex items-center">
+          <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center">
             <Info className="w-4 h-4 mr-2" />
             인물 정보
           </h2>
           <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
             <div className="px-4 py-3 border-b border-gray-100 bg-gray-50">
-              <span className="text-sm font-semibold text-gray-600">소속:</span> 
+              <span className="text-sm font-semibold text-gray-500">소속:</span> 
               <span className="ml-2 text-sm text-gray-900">{character.affiliation}</span>
             </div>
             <ul className="divide-y divide-gray-100">
@@ -136,7 +136,7 @@ export default function CharacterDetail({ character, onBack, onNavigateToCharact
         {/* Secret Info Section */}
         {character.secretInfo && character.secretInfo.length > 0 && (
           <div className="mb-8">
-            <h2 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3 flex items-center">
+            <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center">
               <Lock className="w-4 h-4 mr-2" />
               기밀 정보
             </h2>
@@ -148,7 +148,7 @@ export default function CharacterDetail({ character, onBack, onNavigateToCharact
                 <div className="bg-red-50 text-red-500 p-3 rounded-full mb-3 shadow-sm border border-red-100">
                   <Lock className="w-6 h-6" />
                 </div>
-                <span className="text-gray-600 font-bold text-sm tracking-wide">기밀 정보 열람하기</span>
+                <span className="text-gray-500 font-bold text-sm tracking-wide">기밀 정보 열람하기</span>
               </div>
             ) : (
               <motion.div 
@@ -175,7 +175,7 @@ export default function CharacterDetail({ character, onBack, onNavigateToCharact
 
         {/* Relationship Map */}
         <div className="mb-8">
-          <h2 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3 flex items-center">
+          <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center">
             <Users className="w-4 h-4 mr-2" />
             인물 관계도
           </h2>
@@ -203,7 +203,7 @@ export default function CharacterDetail({ character, onBack, onNavigateToCharact
         {/* Gallery Section */}
         {character.gallery && character.gallery.length > 0 && (
           <div className="mb-8">
-            <h2 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3 flex items-center">
+            <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center">
               <ImageIcon className="w-4 h-4 mr-2" />
               사진첩
             </h2>
@@ -211,7 +211,7 @@ export default function CharacterDetail({ character, onBack, onNavigateToCharact
               {character.gallery.map((imgUrl, idx) => (
                 <div 
                   key={idx}
-                  className="aspect-square rounded-xl overflow-hidden cursor-pointer bg-gray-100 border border-gray-200"
+                  className="aspect-square rounded-xl overflow-hidden cursor-pointer bg-gray-50 border border-gray-200"
                   onClick={() => {
                     const offset = character.imageUrl ? 1 : 0;
                     setSelectedImageIndex(idx + offset);
@@ -267,7 +267,7 @@ export default function CharacterDetail({ character, onBack, onNavigateToCharact
               </div>
               <button 
                 onClick={() => setActiveRel(null)}
-                className="mt-6 w-full bg-gray-900 text-white font-medium py-3 rounded-xl hover:bg-gray-800 transition-colors"
+                className="mt-6 w-full bg-gray-900 text-gray-900 font-medium py-3 rounded-xl hover:bg-gray-800 transition-colors"
               >
                 닫기
               </button>
@@ -295,7 +295,7 @@ export default function CharacterDetail({ character, onBack, onNavigateToCharact
                   className="absolute inset-0 pointer-events-none"
                 >
                   <button
-                    className="absolute top-4 right-4 p-2 text-white bg-black/50 rounded-full hover:bg-black/80 transition-colors z-[70] pointer-events-auto"
+                    className="absolute top-4 right-4 p-2 text-gray-900 bg-black/50 rounded-full hover:bg-black/80 transition-colors z-[70] pointer-events-auto"
                     onClick={(e) => {
                       e.stopPropagation();
                       setSelectedImageIndex(null);
@@ -307,7 +307,7 @@ export default function CharacterDetail({ character, onBack, onNavigateToCharact
                   {allImages.length > 1 && (
                     <>
                       <button 
-                        className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full backdrop-blur-md transition-colors flex items-center justify-center w-12 h-12 shadow-lg pointer-events-auto"
+                        className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-gray-900 p-3 rounded-full backdrop-blur-md transition-colors flex items-center justify-center w-12 h-12 shadow-lg pointer-events-auto"
                         onClick={(e) => {
                           e.stopPropagation();
                           setSelectedImageIndex(prev => prev === null ? null : (prev === 0 ? allImages.length - 1 : prev - 1));
@@ -317,7 +317,7 @@ export default function CharacterDetail({ character, onBack, onNavigateToCharact
                       </button>
                       
                       <button 
-                        className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full backdrop-blur-md transition-colors flex items-center justify-center w-12 h-12 shadow-lg pointer-events-auto"
+                        className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-gray-900 p-3 rounded-full backdrop-blur-md transition-colors flex items-center justify-center w-12 h-12 shadow-lg pointer-events-auto"
                         onClick={(e) => {
                           e.stopPropagation();
                           setSelectedImageIndex(prev => prev === null ? null : (prev + 1) % allImages.length);

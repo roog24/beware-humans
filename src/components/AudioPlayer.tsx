@@ -256,27 +256,27 @@ export default function AudioPlayer() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 10 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="mb-4 bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-800 w-[300px] max-w-[calc(100vw-48px)] max-h-[calc(100dvh-100px)] overflow-hidden flex flex-col text-white"
+            className="mb-4 bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-800 w-[300px] max-w-[calc(100vw-48px)] max-h-[calc(100dvh-100px)] overflow-hidden flex flex-col text-gray-100"
           >
             {/* Current Track Header */}
             <div className="p-4 border-b border-gray-800 bg-gray-800/50 shrink-0">
               <div className="flex items-center gap-4 mb-3">
                 <div className="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center shrink-0 relative overflow-hidden shadow-inner">
-                    <Music className="w-5 h-5 text-gray-300" />
+                    <Music className="w-5 h-5 text-gray-400" />
                     {isPlaying && (
                       <div className="absolute inset-0 border-2 border-blue-500 rounded-full animate-ping opacity-20"></div>
                     )}
                 </div>
                 
                 <div className="flex flex-col flex-1 min-w-0">
-                  <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-0.5">{currentTrack.artist}</span>
-                  <span className="text-sm font-medium text-gray-100 truncate">{currentTrack.title}</span>
+                  <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-0.5">{currentTrack.artist}</span>
+                  <span className="text-sm font-medium text-white truncate">{currentTrack.title}</span>
                 </div>
                 
                 <div className="flex items-center gap-2 shrink-0">
                   <button 
                     onClick={playPrevTrack}
-                    className="w-8 h-8 rounded-full text-gray-300 hover:text-white flex items-center justify-center hover:bg-gray-700/50 transition-colors"
+                    className="w-8 h-8 rounded-full text-gray-400 hover:text-white flex items-center justify-center hover:bg-gray-700/50 transition-colors"
                   >
                     <SkipBack className="w-4 h-4" />
                   </button>
@@ -288,7 +288,7 @@ export default function AudioPlayer() {
                   </button>
                   <button 
                     onClick={playNextTrack}
-                    className="w-8 h-8 rounded-full text-gray-300 hover:text-white flex items-center justify-center hover:bg-gray-700/50 transition-colors"
+                    className="w-8 h-8 rounded-full text-gray-400 hover:text-white flex items-center justify-center hover:bg-gray-700/50 transition-colors"
                   >
                     <SkipForward className="w-4 h-4" />
                   </button>
@@ -310,7 +310,7 @@ export default function AudioPlayer() {
                     <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-sm translate-x-1/2"></div>
                   </div>
                 </div>
-                <div className="flex justify-between items-center text-[10px] text-gray-400 font-medium">
+                <div className="flex justify-between items-center text-[10px] text-gray-500 font-medium">
                   <span>{formatTime(currentTime)}</span>
                   <div className="flex items-center gap-3">
                     <button 
@@ -334,7 +334,7 @@ export default function AudioPlayer() {
             {/* Content: Playlist or Lyrics */}
             <div className="flex-1 min-h-0 max-h-[300px] overflow-y-auto py-2 custom-scrollbar">
               {showLyrics ? (
-                <div className="px-5 py-4 whitespace-pre-wrap text-[13px] text-gray-300 leading-relaxed font-sans text-center">
+                <div className="px-5 py-4 whitespace-pre-wrap text-[13px] text-gray-200 leading-relaxed font-sans text-center">
                   {currentLyrics}
                 </div>
               ) : (

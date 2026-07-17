@@ -8,8 +8,10 @@ import CharacterDetail from './components/CharacterDetail';
 import ZoneDetail from './components/ZoneDetail';
 import AudioPlayer from './components/AudioPlayer';
 import IntroScreen from './components/IntroScreen';
+
 import CommunityBoard from './components/CommunityBoard';
-import { FolderHeart, Map, Search, X, MapPin, MessageSquare } from 'lucide-react';
+import RecordingsModal from './components/RecordingsModal';
+import { FolderHeart, Map, Search, X, MapPin, MessageSquare, Mic } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 
 function ImagePreloader() {
@@ -45,6 +47,7 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [showIntro, setShowIntro] = useState(true);
   const [showCommunityBoard, setShowCommunityBoard] = useState(false);
+  const [showRecordings, setShowRecordings] = useState(false);
   
   useEffect(() => {
     const handlePopState = (e: PopStateEvent) => {
@@ -93,6 +96,7 @@ export default function App() {
       <AnimatePresence>
         {showIntro && <IntroScreen onComplete={() => setShowIntro(false)} />}
         {showCommunityBoard && <CommunityBoard onClose={() => setShowCommunityBoard(false)} />}
+        {showRecordings && <RecordingsModal onClose={() => setShowRecordings(false)} />}
       </AnimatePresence>
 
       <ImagePreloader />
@@ -104,25 +108,34 @@ export default function App() {
         <header className="mb-8 mt-4">
           <div className="flex justify-between items-center mb-4">
             <h1 className="text-3xl font-bold tracking-tight mb-0">앨범</h1>
-            <button
-              onClick={() => setShowCommunityBoard(true)}
-              className="px-3 py-1.5 text-xs font-bold bg-neutral-900 text-white rounded-md flex items-center gap-1.5 hover:bg-neutral-800 transition-colors uppercase tracking-wider"
-            >
-              <MessageSquare className="w-4 h-4" />
-              Alive
-            </button>
+                        <div className="flex gap-2">
+              <button
+                onClick={() => setShowRecordings(true)}
+                className="px-3 py-1.5 text-xs font-bold bg-neutral-900 text-white rounded-md flex items-center gap-1.5 hover:bg-gray-800 transition-colors uppercase tracking-wider"
+              >
+                <Mic className="w-4 h-4" />
+                무전기
+              </button>
+              <button
+                onClick={() => setShowCommunityBoard(true)}
+                className="px-3 py-1.5 text-xs font-bold bg-neutral-900 text-white rounded-md flex items-center gap-1.5 hover:bg-gray-800 transition-colors uppercase tracking-wider"
+              >
+                <MessageSquare className="w-4 h-4" />
+                Alive
+              </button>
+            </div>
           </div>
           <div className="relative flex items-center">
-            <Search className="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+            <Search className="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
             <input 
               type="text" 
               placeholder="사진, 사람, 장소 검색" 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-gray-100 rounded-xl py-2 pl-10 pr-10 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
+              className="w-full bg-gray-50 rounded-xl py-2 pl-10 pr-10 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
             />
             {searchQuery && (
-              <button onClick={() => setSearchQuery('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+              <button onClick={() => setSearchQuery('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-500">
                 <X className="w-5 h-5" />
               </button>
             )}

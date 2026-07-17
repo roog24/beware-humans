@@ -120,12 +120,12 @@ export default function CommunityBoard({ onClose }: { onClose: () => void }) {
       exit={{ opacity: 0 }}
       className="fixed inset-0 bg-black/90 backdrop-blur-md z-[110] flex justify-center sm:p-8"
     >
-      <div className="w-full max-w-3xl bg-[#111111] text-neutral-200 sm:rounded-xl shadow-2xl overflow-hidden flex flex-col relative border border-neutral-800">
+      <div className="w-full max-w-3xl bg-[#111111] text-neutral-200 sm:rounded-xl shadow-2xl overflow-hidden flex flex-col relative border border-gray-100">
         {/* Header */}
-        <div className="bg-[#1a1a1a] p-4 flex items-center justify-between shrink-0 border-b border-neutral-800">
+        <div className="bg-[#1a1a1a] p-4 flex items-center justify-between shrink-0 border-b border-gray-100">
           <div className="flex items-center gap-3">
             {selectedPost ? (
-              <button onClick={() => setSelectedPostId(null)} className="p-1.5 hover:bg-neutral-800 rounded-lg transition-colors">
+              <button onClick={() => setSelectedPostId(null)} className="p-1.5 hover:bg-gray-100 rounded-lg transition-colors">
                 <ChevronLeft className="w-5 h-5 text-neutral-400" />
               </button>
             ) : (
@@ -135,7 +135,7 @@ export default function CommunityBoard({ onClose }: { onClose: () => void }) {
               {selectedPost ? '게시글 보기' : '생존자 커뮤니티'}
             </h2>
           </div>
-          <button onClick={onClose} className="p-1.5 hover:bg-neutral-800 rounded-lg transition-colors">
+          <button onClick={onClose} className="p-1.5 hover:bg-gray-100 rounded-lg transition-colors">
             <X className="w-5 h-5 text-neutral-400" />
           </button>
         </div>
@@ -158,7 +158,7 @@ export default function CommunityBoard({ onClose }: { onClose: () => void }) {
                   <button
                     key={post.id}
                     onClick={() => setSelectedPostId(post.id)}
-                    className="w-full text-left p-4 hover:bg-neutral-900/50 transition-all flex flex-col gap-2"
+                    className="w-full text-left p-4 hover:bg-white/50 transition-all flex flex-col gap-2"
                   >
                     <h3 className="text-base sm:text-lg font-medium text-neutral-100 line-clamp-2 leading-snug">{post.title}</h3>
                     <div className="flex items-center justify-between text-xs text-neutral-500">
@@ -183,7 +183,7 @@ export default function CommunityBoard({ onClose }: { onClose: () => void }) {
                 className="flex flex-col"
               >
                 {/* Post Header */}
-                <div className="p-4 sm:p-6 border-b border-neutral-800 bg-[#141414]">
+                <div className="p-4 sm:p-6 border-b border-gray-100 bg-[#141414]">
                   <h1 className="text-xl sm:text-2xl font-bold leading-tight text-neutral-100 mb-4">
                     {selectedPost.title}
                   </h1>
@@ -208,7 +208,7 @@ export default function CommunityBoard({ onClose }: { onClose: () => void }) {
                       onClick={handleLike}
                       className={`flex flex-col items-center gap-2 transition-colors group ${likedPosts[selectedPost.id] ? 'text-red-400' : 'text-neutral-500 hover:text-red-400'}`}
                     >
-                      <div className={`w-12 h-12 rounded-full border flex items-center justify-center transition-all ${likedPosts[selectedPost.id] ? 'border-red-900/50 bg-red-950/50 scale-105' : 'border-neutral-800 bg-neutral-900/30 group-hover:bg-neutral-800'}`}>
+                      <div className={`w-12 h-12 rounded-full border flex items-center justify-center transition-all ${likedPosts[selectedPost.id] ? 'border-red-900/50 bg-red-950/50 scale-105' : 'border-gray-100 bg-white/30 group-hover:bg-gray-100'}`}>
                         <ThumbsUp className={`w-5 h-5 ${likedPosts[selectedPost.id] ? 'fill-current' : ''}`} />
                       </div>
                       <span className="text-xs font-bold">{likesCount[selectedPost.id]}</span>
@@ -217,8 +217,8 @@ export default function CommunityBoard({ onClose }: { onClose: () => void }) {
                 </div>
 
                 {/* Comments */}
-                <div className="border-t border-neutral-800 bg-[#0f0f0f]">
-                  <div className="p-4 border-b border-neutral-800 font-bold text-sm text-neutral-300">
+                <div className="border-t border-gray-100 bg-[#0f0f0f]">
+                  <div className="p-4 border-b border-gray-100 font-bold text-sm text-neutral-300">
                     댓글 ({selectedPost.comments.length})
                   </div>
                   <div className="divide-y divide-neutral-800/50">
