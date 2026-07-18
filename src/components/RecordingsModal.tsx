@@ -20,13 +20,6 @@ const RANDOM_TRANSMISSIONS = [
     ]
   },
   {
-    character: '이태윤',
-    audioUrl: 'https://raw.githubusercontent.com/roog24/11/main/(%EB%AC%B4%EC%A0%84%EA%B8%B0)%20%EC%9D%B4%ED%83%9C%EC%9C%A4%20-%20...%EC%9D%B4%ED%83%9C%EC%9C%A4%EC%9E%85%EB%8B%88%EB%8B%A4..MP3',
-    subtitles: [
-      { time: 0, text: '...이태윤입니다.' }
-    ]
-  },
-  {
     character: '하남준',
     audioUrl: 'https://raw.githubusercontent.com/roog24/11/main/(%EB%AC%B4%EC%A0%84%EA%B8%B0)%20%ED%95%98%EB%82%A8%EC%A4%80%20-%20%EC%BD%94%EC%9B%83%EC%9D%8C%20%EB%AD%90%EB%83%90%20%EB%84%88.MP3',
     subtitles: [
@@ -348,11 +341,11 @@ export default function RecordingsModal({ onClose }: Props) {
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="flex flex-col md:flex-row gap-6 h-full items-center justify-center pb-10"
+        className="flex flex-col md:flex-row gap-4 sm:gap-6 h-full items-center justify-center pb-4 md:pb-10 overflow-y-auto custom-scrollbar"
       >
         <button
           onClick={() => setMode('logs')}
-          className="flex flex-col items-center justify-center gap-4 w-full md:w-1/2 max-w-[280px] aspect-square bg-neutral-800/40 border border-neutral-700 hover:border-blue-500/50 hover:bg-neutral-800/80 rounded-3xl transition-all group"
+          className="flex flex-col items-center justify-center gap-4 w-full md:w-1/2 max-w-[280px] py-8 md:py-0 md:aspect-square bg-neutral-800/40 border border-neutral-700 hover:border-blue-500/50 hover:bg-neutral-800/80 rounded-3xl transition-all group"
         >
           <div className="w-20 h-20 rounded-full bg-neutral-900 flex items-center justify-center group-hover:scale-110 transition-transform shadow-inner border border-neutral-800">
             <Radio className="w-8 h-8 text-blue-400" />
@@ -365,7 +358,7 @@ export default function RecordingsModal({ onClose }: Props) {
 
         <button
           onClick={() => setMode('random')}
-          className="flex flex-col items-center justify-center gap-4 w-full md:w-1/2 max-w-[280px] aspect-square bg-neutral-800/40 border border-neutral-700 hover:border-green-500/50 hover:bg-neutral-800/80 rounded-3xl transition-all group"
+          className="flex flex-col items-center justify-center gap-4 w-full md:w-1/2 max-w-[280px] py-8 md:py-0 md:aspect-square bg-neutral-800/40 border border-neutral-700 hover:border-green-500/50 hover:bg-neutral-800/80 rounded-3xl transition-all group"
         >
           <div className="w-20 h-20 rounded-full bg-neutral-900 flex items-center justify-center group-hover:scale-110 transition-transform shadow-inner border border-neutral-800 relative">
             <Play className="w-8 h-8 text-green-400 ml-1" />
@@ -392,7 +385,7 @@ export default function RecordingsModal({ onClose }: Props) {
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
-        className="bg-neutral-900 w-full max-w-2xl h-[80vh] max-h-[800px] rounded-3xl shadow-2xl flex flex-col overflow-hidden border border-neutral-800"
+        className="bg-neutral-900 w-full max-w-2xl h-[90vh] md:h-[80vh] max-h-[800px] rounded-3xl shadow-2xl flex flex-col overflow-hidden border border-neutral-800"
         onClick={e => e.stopPropagation()}
       >
         <div className="flex justify-between items-center p-5 sm:p-6 border-b border-neutral-800 bg-neutral-900 z-10 shrink-0">
