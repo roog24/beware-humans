@@ -37,7 +37,7 @@ export default function CharacterList({ onBack, onSelect }: Props) {
           >
             <div className={`w-full aspect-square rounded-2xl shadow-sm flex items-center justify-center text-3xl font-bold border border-black/5 transition-transform transform group-hover:scale-95 overflow-hidden ${char.color}`}>
               {char.imageUrl ? (
-                <img src={char.imageUrl} alt={char.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                <img src={char.imageUrl} alt={char.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" loading="lazy" />
               ) : (
                 getInitials(char.name)
               )}

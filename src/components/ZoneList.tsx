@@ -35,7 +35,7 @@ export default function ZoneList({ onBack, onSelect }: Props) {
           >
             <div className={`w-full aspect-[4/3] rounded-2xl shadow-sm flex flex-col items-center justify-center border border-black/5 transition-transform transform group-hover:scale-95 overflow-hidden relative ${zone.color}`}>
               {zone.imageUrl ? (
-                <img src={zone.imageUrl} alt={zone.name} className="absolute inset-0 w-full h-full object-cover" referrerPolicy="no-referrer" />
+                <img src={zone.imageUrl} alt={zone.name} className="absolute inset-0 w-full h-full object-cover" referrerPolicy="no-referrer" loading="lazy" />
               ) : (
                 <MapPin className="w-10 h-10 opacity-70" />
               )}

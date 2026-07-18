@@ -308,7 +308,7 @@ export default function RecordingsModal({ onClose }: Props) {
                     {avatars.length > 0 ? avatars.map((avatar, idx) => (
                       <div key={idx} className="w-12 h-12 rounded-full overflow-hidden shadow-sm relative border-2 border-neutral-800 z-[10]">
                           {avatar?.imageUrl ? (
-                              <img src={avatar.imageUrl} alt={avatar.name} className="w-full h-full object-cover grayscale opacity-80 group-hover/btn:grayscale-0 group-hover/btn:opacity-100 transition-all duration-300" referrerPolicy="no-referrer" />
+                              <img src={avatar.imageUrl} alt={avatar.name} className="w-full h-full object-cover grayscale opacity-80 group-hover/btn:grayscale-0 group-hover/btn:opacity-100 transition-all duration-300" referrerPolicy="no-referrer" loading="lazy" />
                           ) : (
                               <div className={`w-full h-full ${avatar?.color} flex items-center justify-center font-bold text-lg grayscale opacity-80 group-hover/btn:grayscale-0 group-hover/btn:opacity-100 transition-all duration-300`}>
                                   {avatar?.name.charAt(0)}

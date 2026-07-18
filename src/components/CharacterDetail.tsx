@@ -188,7 +188,7 @@ export default function CharacterDetail({ character, onBack, onNavigateToCharact
               >
                 <div className={`w-16 h-16 rounded-full shadow-md flex items-center justify-center text-lg font-bold border-2 border-white transition-transform transform group-hover:scale-105 overflow-hidden ${getTargetColor(rel.targetId)}`}>
                   {getTargetImage(rel.targetId) ? (
-                    <img src={getTargetImage(rel.targetId)} alt={rel.targetName} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                    <img src={getTargetImage(rel.targetId)} alt={rel.targetName} className="w-full h-full object-cover" referrerPolicy="no-referrer" loading="lazy" />
                   ) : (
                     getInitials(rel.targetName)
                   )}
@@ -218,7 +218,7 @@ export default function CharacterDetail({ character, onBack, onNavigateToCharact
                     setShowOverlay(true);
                   }}
                 >
-                  <img src={imgUrl} alt={`${character.name} 사진 ${idx + 1}`} className="w-full h-full object-cover hover:scale-110 transition-transform duration-300" referrerPolicy="no-referrer" />
+                  <img src={imgUrl} alt={`${character.name} 사진 ${idx + 1}`} className="w-full h-full object-cover hover:scale-110 transition-transform duration-300" referrerPolicy="no-referrer" loading="lazy" />
                 </div>
               ))}
             </div>
@@ -247,7 +247,7 @@ export default function CharacterDetail({ character, onBack, onNavigateToCharact
               <div className="flex items-center space-x-4 mb-4">
                 <div className={`w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold overflow-hidden ${getTargetColor(activeRel.targetId)}`}>
                   {getTargetImage(activeRel.targetId) ? (
-                    <img src={getTargetImage(activeRel.targetId)} alt={activeRel.targetName} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                    <img src={getTargetImage(activeRel.targetId)} alt={activeRel.targetName} className="w-full h-full object-cover" referrerPolicy="no-referrer" loading="lazy" />
                   ) : (
                     getInitials(activeRel.targetName)
                   )}

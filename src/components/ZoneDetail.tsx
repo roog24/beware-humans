@@ -129,7 +129,7 @@ export default function ZoneDetail({ zone, onBack, onNavigateToCharacter }: Prop
                 >
                   <div className={`w-14 h-14 rounded-full shadow-sm flex items-center justify-center text-lg font-bold border border-white transition-transform transform group-hover:scale-105 overflow-hidden ${char.color}`}>
                     {char.imageUrl ? (
-                      <img src={char.imageUrl} alt={char.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                      <img src={char.imageUrl} alt={char.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" loading="lazy" />
                     ) : (
                       getInitials(char.name)
                     )}

@@ -19,9 +19,6 @@ function ImagePreloader() {
     const urls = new Set<string>();
     CHARACTERS.forEach(c => {
       if (c.imageUrl) urls.add(c.imageUrl);
-      if (c.gallery) {
-        c.gallery.forEach(img => urls.add(img));
-      }
     });
     ZONES.forEach(z => {
       if (z.imageUrl) urls.add(z.imageUrl);
@@ -161,7 +158,7 @@ export default function App() {
                     >
                       <div className="w-12 h-12 rounded-full overflow-hidden shrink-0 shadow-sm">
                         {char.imageUrl ? (
-                          <img src={char.imageUrl} alt={char.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                          <img src={char.imageUrl} alt={char.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" loading="lazy" />
                         ) : (
                           <div className={`w-full h-full ${char.color} flex items-center justify-center font-bold text-lg`}>
                             {char.name.charAt(0)}
@@ -190,7 +187,7 @@ export default function App() {
                     >
                       <div className={`w-12 h-12 rounded-xl overflow-hidden shrink-0 shadow-sm flex items-center justify-center ${zone.imageUrl ? '' : zone.color}`}>
                         {zone.imageUrl ? (
-                          <img src={zone.imageUrl} alt={zone.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                          <img src={zone.imageUrl} alt={zone.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" loading="lazy" />
                         ) : (
                           <MapPin className="w-6 h-6 opacity-50" />
                         )}
