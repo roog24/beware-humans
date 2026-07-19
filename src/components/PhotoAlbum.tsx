@@ -34,7 +34,7 @@ const CUSTOM_PHOTOS = [
   { url: "https://i.postimg.cc/HkjYXk3N/seoyuha-3.png", characterName: "서유하" },
   { url: "https://i.postimg.cc/9QzmZQ1g/seoyuha-4.png", characterName: "서유하" },
   { url: "https://i.postimg.cc/FH1r3HG8/seoyuha-5.png", characterName: "서유하" },
-  { url: "https://i.postimg.cc/nVvg6vSV/seoyuha-6.png", characterName: "서유하" },
+  { url: "https://i.postimg.cc/66Dxhzxr/seoyuha-6.png", characterName: "서유하" },
 
   { url: "https://i.postimg.cc/cJndkkpP/itaeyun-1.png", characterName: "이태윤" },
   { url: "https://i.postimg.cc/LXk22Y65/itaeyun-2.png", characterName: "이태윤" },
@@ -201,7 +201,7 @@ export default function PhotoAlbum({ onBack }: Props) {
                       {allPhotos[selectedIndex].characterName} ({selectedIndex + 1} / {allPhotos.length})
                     </div>
                     <button 
-                      className="text-gray-900/80 hover:text-gray-900 bg-black/50 p-2 rounded-full backdrop-blur-md pointer-events-auto transition-colors"
+                      className="text-white hover:text-white/80 bg-black/50 p-2 rounded-full backdrop-blur-md pointer-events-auto transition-colors"
                       onClick={(e) => { e.stopPropagation(); setSelectedIndex(null); }}
                     >
                       <X className="w-6 h-6" />
@@ -210,14 +210,14 @@ export default function PhotoAlbum({ onBack }: Props) {
 
                   {/* Navigation Buttons */}
                   <button 
-                    className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-gray-900 p-3 rounded-full backdrop-blur-md transition-colors flex items-center justify-center w-12 h-12 shadow-lg pointer-events-auto"
+                    className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full backdrop-blur-md transition-colors flex items-center justify-center w-12 h-12 shadow-lg pointer-events-auto"
                     onClick={handlePrevious}
                   >
                     <ChevronLeft className="w-6 h-6 ml-[-2px]" />
                   </button>
                   
                   <button 
-                    className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-gray-900 p-3 rounded-full backdrop-blur-md transition-colors flex items-center justify-center w-12 h-12 shadow-lg pointer-events-auto"
+                    className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full backdrop-blur-md transition-colors flex items-center justify-center w-12 h-12 shadow-lg pointer-events-auto"
                     onClick={handleNext}
                   >
                     <ChevronRight className="w-6 h-6 mr-[-2px]" />
