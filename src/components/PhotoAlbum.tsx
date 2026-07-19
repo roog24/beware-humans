@@ -89,6 +89,7 @@ const CUSTOM_PHOTOS = [
 export default function PhotoAlbum({ onBack }: Props) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [showOverlay, setShowOverlay] = useState(true);
+  const [loadedImagesCount, setLoadedImagesCount] = useState(1);
 
   useEffect(() => {
     if (selectedIndex !== null) {
@@ -139,19 +140,25 @@ export default function PhotoAlbum({ onBack }: Props) {
         {allPhotos.map((photo, idx) => (
           <div 
             key={idx} 
-            className="aspect-square rounded-xl overflow-hidden bg-gray-50 cursor-pointer shadow-sm hover:shadow-md transition-shadow"
+            className="aspect-square rounded-xl overflow-hidden bg-gray-100 cursor-pointer shadow-sm hover:shadow-md transition-shadow relative"
             onClick={() => {
               setSelectedIndex(idx);
               setShowOverlay(true);
             }}
           >
-            <img 
-              src={photo.url} 
-              alt={photo.characterName} 
-              className="w-full h-full object-cover"
-              referrerPolicy="no-referrer"
-              loading="lazy"
-            />
+            {idx < loadedImagesCount && (
+              <motion.img 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+                src={photo.url} 
+                alt={photo.characterName} 
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+                onLoad={() => setLoadedImagesCount(prev => Math.max(prev, idx + 2))}
+                onError={() => setLoadedImagesCount(prev => Math.max(prev, idx + 2))}
+              />
+            )}
           </div>
         ))}
       </div>
