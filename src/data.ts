@@ -6,7 +6,7 @@ export const CHARACTERS: Character[] = [
     name: "서유하",
     affiliation: "세이프 존 1계급",
     color: "bg-stone-200 text-stone-800",
-    imageUrl: "https://i.postimg.cc/3JWZStHC/seoyuha.png",
+    imageUrl: "https://i.postimg.cc/d09KWhTz/seoyuha.png",
     gallery: [
       "https://i.postimg.cc/ZRGpwXcW/seoyuha-gippeum.png",
       "https://i.postimg.cc/ZYNrWKbt/seoyuha-nunmul.png",
@@ -125,7 +125,7 @@ export const CHARACTERS: Character[] = [
       "나이: 32세",
       "신체: 176cm",
       "성향: ESTJ, 가식 친절",
-      "특징: 미래 연구소 선임 연구원. 내면에 짙은 불안과 경계심.",
+      "특징: 미래 연구소 일반 연구원. 내면에 짙은 불안과 경계심.",
     ],
     secretInfo: [
       "본명: 권지우 (실제 나이 28세, 본래 성향 ISTP)",

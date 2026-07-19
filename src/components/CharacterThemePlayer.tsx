@@ -65,7 +65,7 @@ export default function CharacterThemePlayer({ themeSongName, characterName, cha
       </div>
       <button 
         onClick={togglePlay}
-        className="w-10 h-10 rounded-full bg-blue-500 text-gray-900 flex items-center justify-center hover:scale-105 active:scale-95 transition-transform shrink-0 shadow-md"
+        className="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center hover:scale-105 active:scale-95 transition-transform shrink-0 shadow-md"
       >
         {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
       </button>

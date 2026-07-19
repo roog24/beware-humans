@@ -3,6 +3,9 @@ import { CHARACTERS, ZONES } from './data';
 import CharacterList from './components/CharacterList';
 import ZoneList from './components/ZoneList';
 import PhotoAlbum from './components/PhotoAlbum';
+import SurvivalGuide from './components/SurvivalGuide';
+import SurvivalTest from './components/SurvivalTest';
+import SurvivalDiary from './components/SurvivalDiary';
 import { History } from 'lucide-react';
 import CharacterDetail from './components/CharacterDetail';
 import ZoneDetail from './components/ZoneDetail';
@@ -11,7 +14,7 @@ import IntroScreen from './components/IntroScreen';
 
 import CommunityBoard from './components/CommunityBoard';
 import RecordingsModal from './components/RecordingsModal';
-import { FolderHeart, Map, Search, X, MapPin, MessageSquare, Mic } from 'lucide-react';
+import { FolderHeart, Map, Search, X, MapPin, MessageSquare, Mic, AlertTriangle, ShieldAlert, Eye, FileWarning, ClipboardList, Package, BookOpen } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 
 function ImagePreloader() {
@@ -34,7 +37,7 @@ function ImagePreloader() {
   return null;
 }
 
-type ViewState = 'home' | 'character_list' | 'zone_list' | 'character_detail' | 'zone_detail' | 'photo_album';
+type ViewState = 'home' | 'character_list' | 'zone_list' | 'character_detail' | 'zone_detail' | 'photo_album' | 'survival_guide' | 'survival_test' | 'survival_diary';
 
 type HistoryState = { view: ViewState; id: string | null };
 
@@ -104,7 +107,11 @@ export default function App() {
       <div className={`p-6 ${view !== 'home' ? 'hidden' : 'block'}`}>
         <header className="mb-8 mt-4">
           <div className="flex justify-between items-center mb-4">
-            <h1 className="text-3xl font-bold tracking-tight mb-0">앨범</h1>
+            <h1 
+              className="text-3xl font-bold tracking-tight mb-0 cursor-default"
+            >
+              앨범
+            </h1>
                         <div className="flex gap-2">
               <button
                 onClick={() => setShowRecordings(true)}
@@ -205,7 +212,7 @@ export default function App() {
         ) : (
           <section>
             <h2 className="text-lg font-semibold mb-4 text-gray-800">나의 앨범</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
               {/* Characters Folder */}
               <div 
                 className="flex flex-col cursor-pointer group"
@@ -246,6 +253,48 @@ export default function App() {
                   <p className="text-xs text-gray-500">돌아오지 않을 시간들</p>
                 </div>
               </div>
+              
+              {/* Survival Diary Folder */}
+              <div 
+                className="flex flex-col cursor-pointer group"
+                onClick={() => navigateTo('survival_diary')}
+              >
+                <div className="bg-indigo-50 aspect-square rounded-2xl p-4 flex items-center justify-center border border-indigo-100 transition-transform transform group-hover:scale-[0.98]">
+                  <BookOpen className="w-16 h-16 text-indigo-400" />
+                </div>
+                <div className="mt-3 px-1">
+                  <h3 className="font-semibold text-sm text-gray-900">비밀 일기장</h3>
+                  <p className="text-xs text-gray-500">생존 기록</p>
+                </div>
+              </div>
+
+              {/* Survival Guide Folder */}
+              <div 
+                className="flex flex-col cursor-pointer group"
+                onClick={() => navigateTo('survival_guide')}
+              >
+                <div className="bg-red-50 aspect-square rounded-2xl p-4 flex items-center justify-center border border-red-100 transition-transform transform group-hover:scale-[0.98]">
+                  <FileWarning className="w-16 h-16 text-red-400" />
+                </div>
+                <div className="mt-3 px-1">
+                  <h3 className="font-semibold text-sm text-gray-900">생존 가이드</h3>
+                  <p className="text-xs text-gray-500">절대 수칙 6선</p>
+                </div>
+              </div>
+
+              {/* Survival Test Folder */}
+              <div 
+                className="flex flex-col cursor-pointer group"
+                onClick={() => navigateTo('survival_test')}
+              >
+                <div className="bg-orange-50 aspect-square rounded-2xl p-4 flex items-center justify-center border border-orange-100 transition-transform transform group-hover:scale-[0.98]">
+                  <ClipboardList className="w-16 h-16 text-orange-400" />
+                </div>
+                <div className="mt-3 px-1">
+                  <h3 className="font-semibold text-sm text-gray-900">생존 테스트</h3>
+                  <p className="text-xs text-gray-500">나의 생존 유형은?</p>
+                </div>
+              </div>
             </div>
           </section>
         )}
@@ -258,6 +307,15 @@ export default function App() {
         )}
         {view === 'photo_album' && (
           <PhotoAlbum key="photo_album" onBack={navigateBack} />
+        )}
+        {view === 'survival_guide' && (
+          <SurvivalGuide key="survival_guide" onBack={navigateBack} />
+        )}
+        {view === 'survival_test' && (
+          <SurvivalTest key="survival_test" onBack={navigateBack} />
+        )}
+        {view === 'survival_diary' && (
+          <SurvivalDiary key="survival_diary" onBack={navigateBack} />
         )}
         {view === 'zone_list' && (
           <ZoneList key="zone_list" onBack={navigateBack} onSelect={(id) => navigateTo('zone_detail', id)} />
