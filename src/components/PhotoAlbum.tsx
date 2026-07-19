@@ -86,10 +86,23 @@ const CUSTOM_PHOTOS = [
   { url: "https://i.postimg.cc/7Z7xmW83/han-yuhwan-6.png", characterName: "한유환" }
 ];
 
+let globalLoadedCount = 1;
+
 export default function PhotoAlbum({ onBack }: Props) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [showOverlay, setShowOverlay] = useState(true);
-  const [loadedImagesCount, setLoadedImagesCount] = useState(1);
+  const [loadedImagesCount, setLoadedImagesCount] = useState(globalLoadedCount);
+
+  useEffect(() => {
+    if (loadedImagesCount <= CUSTOM_PHOTOS.length) {
+      const timer = setTimeout(() => {
+        const nextCount = loadedImagesCount + 1;
+        globalLoadedCount = Math.max(globalLoadedCount, nextCount);
+        setLoadedImagesCount(prev => Math.max(prev, nextCount));
+      }, 800);
+      return () => clearTimeout(timer);
+    }
+  }, [loadedImagesCount]);
 
   useEffect(() => {
     if (selectedIndex !== null) {
@@ -155,8 +168,16 @@ export default function PhotoAlbum({ onBack }: Props) {
                 alt={photo.characterName} 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
-                onLoad={() => setLoadedImagesCount(prev => Math.max(prev, idx + 2))}
-                onError={() => setLoadedImagesCount(prev => Math.max(prev, idx + 2))}
+                onLoad={() => {
+                  const nextCount = Math.max(loadedImagesCount, idx + 2);
+                  globalLoadedCount = Math.max(globalLoadedCount, nextCount);
+                  setLoadedImagesCount(prev => Math.max(prev, nextCount));
+                }}
+                onError={() => {
+                  const nextCount = Math.max(loadedImagesCount, idx + 2);
+                  globalLoadedCount = Math.max(globalLoadedCount, nextCount);
+                  setLoadedImagesCount(prev => Math.max(prev, nextCount));
+                }}
               />
             )}
           </div>
