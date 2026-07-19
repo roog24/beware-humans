@@ -267,7 +267,7 @@ export default function CharacterDetail({ character, onBack, onNavigateToCharact
               </div>
               <button 
                 onClick={() => setActiveRel(null)}
-                className="mt-6 w-full bg-gray-900 text-gray-900 font-medium py-3 rounded-xl hover:bg-gray-800 transition-colors"
+                className="mt-6 w-full bg-gray-900 text-white font-medium py-3 rounded-xl hover:bg-gray-800 transition-colors"
               >
                 닫기
               </button>
