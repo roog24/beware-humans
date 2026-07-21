@@ -80,7 +80,6 @@ const HA_NAM_JUN_DIARY_ENTRIES: DiaryEntry[] = [
 
 지랄 하지 마!! 지랄 하지 마라, 진짜!!!!
 
-(광기에 차서 띄어쓰기조차 무시하고 휘갈긴 글씨들)
 그새끼는그냥운이좋았을뿐이야내가그때집을나가지않았으면그새끼는벌써좀비밥이되었을걸?왜사람들은나를안쳐다보고그새끼이름만부르는건데?엄마도아빠도다그새끼만좋아했잖아왜?왜?왜?왜?왜?왜?왜?왜?왜?
 
 (펜을 던진 듯 잉크가 번지다가, 다시 떨리는 글씨)
@@ -125,7 +124,7 @@ export default function SurvivalDiary({ onBack }: Props) {
       if (part.startsWith('<red>') && part.endsWith('</red>')) {
         const innerText = part.slice(5, -6);
         return (
-          <span key={index} className="block text-[#a00000] font-bold mt-1 mb-2 text-[1.1rem] tracking-wide" style={{ textShadow: '1px 1px 0px rgba(160, 0, 0, 0.2)' }}>
+          <span key={index} className="block text-[#a00000] font-bold mt-1 mb-2 text-base tracking-wide" style={{ textShadow: '1px 1px 0px rgba(160, 0, 0, 0.2)' }}>
             {innerText}
           </span>
         );
@@ -148,7 +147,7 @@ export default function SurvivalDiary({ onBack }: Props) {
         >
           <ChevronLeft className="w-6 h-6 text-gray-700" />
         </button>
-        <h1 className="text-xl font-bold ml-2">하남준의 비밀 일기장</h1>
+        <h1 className="text-xl font-bold ml-2">비밀 일기장</h1>
       </header>
 
       <div className="flex-1 overflow-y-auto p-4 md:p-6 bg-[#f4ecd8] bg-[url('https://www.transparenttextures.com/patterns/aged-paper.png')]">
@@ -205,7 +204,7 @@ export default function SurvivalDiary({ onBack }: Props) {
                 </div>
 
                 <div className="relative flex-1 z-10">
-                  <div className="text-[#2a221a] text-lg leading-[32px] whitespace-pre-wrap relative z-10 py-1 font-medium tracking-tight">
+                  <div className="text-[#2a221a] text-base leading-[32px] whitespace-pre-wrap relative z-10 py-1 font-medium tracking-tight">
                     {renderContent(selectedEntry.content)}
                   </div>
                 </div>

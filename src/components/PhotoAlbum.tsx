@@ -47,8 +47,8 @@ const CUSTOM_PHOTOS = [
   { url: "https://i.postimg.cc/QxYs8rs4/jeonghaeun-2.png", characterName: "정해운" },
   { url: "https://i.postimg.cc/9FgVmjVL/jeonghaeun-3.png", characterName: "정해운" },
   { url: "https://i.postimg.cc/mgnxZmyw/jeonghaeun-4.png", characterName: "정해운" },
-  { url: "https://i.postimg.cc/3Jf78H7z/jeonghaeun-5.png", characterName: "정해운" },
-  { url: "https://i.postimg.cc/bwGPdFNB/jeonghaeun-6.png", characterName: "정해운" },
+  { url: "https://i.postimg.cc/LXQfxDMG/jeonghaeun-5.png", characterName: "정해운" },
+  { url: "https://i.postimg.cc/GtZDCptK/jeonghaeun-6.png", characterName: "정해운" },
 
   { url: "https://i.postimg.cc/7L0ynGz1/cheong-owol-1.png", characterName: "청오월" },
   { url: "https://i.postimg.cc/hj0WNkp8/cheong-owol-2.png", characterName: "청오월" },

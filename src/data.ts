@@ -58,12 +58,12 @@ export const CHARACTERS: Character[] = [
     color: "bg-slate-800 text-slate-100",
     imageUrl: "https://i.postimg.cc/xdDpD4rf/bagdoyeong.png",
     gallery: [
-      "https://i.postimg.cc/QxsSNTVW/bagdoyeong-gippeum.png",
-      "https://i.postimg.cc/q79XPtWb/bagdoyeong-nunmul.png",
-      "https://i.postimg.cc/VNSWZ9Zn/bagdoyeong-danghwang.png",
-      "https://i.postimg.cc/jjW4363H/bagdoyeong-mupyojeong.png",
-      "https://i.postimg.cc/YS4zDNDP/bagdoyeong-seulpeum.png",
-      "https://i.postimg.cc/tgLtK1LQ/bagdoyeong-hwanam.png",
+      "https://i.postimg.cc/C5xdrhn3/bagdoyeong-gippeum.png",
+      "https://i.postimg.cc/nhDrPwMs/bagdoyeong-nunmul.png",
+      "https://i.postimg.cc/gk5r4Pzt/bagdoyeong-danghwang.png",
+      "https://i.postimg.cc/bwtrBFdf/bagdoyeong-mupyojeong.png",
+      "https://i.postimg.cc/13qXjY44/bagdoyeong-seulpeum.png",
+      "https://i.postimg.cc/8CgcQBrJ/bagdoyeong-hwanam.png",
     ],
     themeSongName: "도련님",
     themeSongUrl:
@@ -73,7 +73,7 @@ export const CHARACTERS: Character[] = [
       "나이: 32세",
       "신체: 182cm",
       "성향: ISTJ, 이성적, 차분함",
-      "특징: 서유하의 전담 경호원. 서유하 한정 절대 복종.",
+      "특징: 서유하의 전담 경호원. 서유하 한정 절대 복종. 서툰 감정 표현.",
     ],
     secretInfo: [
       "숨겨진 성향: 타인의 적의나 살의에 소름 끼칠 정도로 무덤덤하고, 자신이 다치는 것에도 무감각하며 오직 주군의 안위만 우선시함",
@@ -128,7 +128,7 @@ export const CHARACTERS: Character[] = [
       "특징: 미래 연구소 일반 연구원. 내면에 짙은 불안과 경계심.",
     ],
     secretInfo: [
-      "본명: 권지우 (실제 나이 28세, 본래 성향 ISTP)",
+      "본명: 권지우 (실제 나이 28세, 본래 성향 ISFP)",
       "본성: 쫄보, 애정 결핍, 심한 자기혐오",
       "과거: 부모와 함께 잡혀와 3계급 실험체로 살다 부모를 잃음",
       "과거: 식품 공장 품질관리 직원 출신으로, 죽은 진짜 백현우를 완벽히 모방하며 신분을 훔쳐 살고 있음",
@@ -162,14 +162,14 @@ export const CHARACTERS: Character[] = [
     name: "정해운",
     affiliation: "세이프 존 2계급 (선임 연구원)",
     color: "bg-rose-100 text-rose-900",
-    imageUrl: "https://i.postimg.cc/269C617R/jeonghaeun.png",
+    imageUrl: "https://i.postimg.cc/xCGjCT65/jeonghaeun.png",
     gallery: [
-      "https://i.postimg.cc/W1VMwL0F/jeonghaeun-gippeum.png",
-      "https://i.postimg.cc/jjgPTDmr/jeonghaeun-nunmul.png",
-      "https://i.postimg.cc/LsCLSJw5/jeonghaeun-danghwang.png",
-      "https://i.postimg.cc/Pq3YHC9x/jeonghaeun-mupyojeong.png",
-      "https://i.postimg.cc/QM41DFw8/jeonghaeun-seulpeum.png",
-      "https://i.postimg.cc/nLRBxXg4/jeonghaeun-hwanam.png",
+      "https://i.postimg.cc/bvjKv04w/jeonghaeun-gippeum.png",
+      "https://i.postimg.cc/NMdVb3F6/jeonghaeun-nunmul.png",
+      "https://i.postimg.cc/XqXPPsBr/jeonghaeun-danghwang.png",
+      "https://i.postimg.cc/Fz166TkS/jeonghaeun-mupyojeong.png",
+      "https://i.postimg.cc/NFLnnd22/jeonghaeun-seulpeum.png",
+      "https://i.postimg.cc/mkqnW7Qs/jeonghaeun-hwanam.png",
     ],
     themeSongName: "기괴한 왈츠",
     themeSongUrl:
@@ -177,8 +177,8 @@ export const CHARACTERS: Character[] = [
     quote: "「좀비인가요? 해부하고 싶다! 😍」",
     info: [
       "나이: 22세",
-      "신체: 184cm",
-      "성향: ISFP, 해맑음, 사차원",
+      "신체: 179cm",
+      "성향: ENTP, 해맑음, 사차원",
       "특징: 매드 사이언티스트. 언어 발음 퇴화로 인해 핸드폰 메모장을 적어 의사소통함. 감정결여",
     ],
     secretInfo: [
@@ -272,7 +272,7 @@ export const CHARACTERS: Character[] = [
       "https://i.postimg.cc/Bt9vs3JL/itaeyun-danghwang.png",
       "https://i.postimg.cc/bdcv8PqJ/itaeyun-mupyojeong.png",
       "https://i.postimg.cc/hhWGgnKX/itaeyun-seulpeum.png",
-      "https://i.postimg.cc/fW3jwvww/itaeyun-hwanam.png",
+      "https://i.postimg.cc/QdtkKD6z/itaeyun-hwanam.png",
     ],
     themeSongName: "새싹",
     themeSongUrl:
@@ -320,12 +320,12 @@ export const CHARACTERS: Character[] = [
     color: "bg-red-800 text-red-50",
     imageUrl: "https://i.postimg.cc/TPvqPG5W/taehowon.png",
     gallery: [
-      "https://i.postimg.cc/76Nvby10/taehowon-gippeum.png",
-      "https://i.postimg.cc/Vk03nt9h/taehowon-nunmul.png",
-      "https://i.postimg.cc/wjRSLN5S/taehowon-danghwang.png",
-      "https://i.postimg.cc/g2Lf8hqd/taehowon-mupyojeong.png",
-      "https://i.postimg.cc/P5vBYDb3/taehowon-seulpeum.png",
-      "https://i.postimg.cc/DzVRgzBZ/taehowon-hwanam.png",
+      "https://i.postimg.cc/zXz6bSzH/taehowon-gippeum.png",
+      "https://i.postimg.cc/MGQF2958/taehowon-nunmul.png",
+      "https://i.postimg.cc/MGQF29Dh/taehowon-danghwang.png",
+      "https://i.postimg.cc/q735V1LY/taehowon-mupyojeong.png",
+      "https://i.postimg.cc/y85bbMFM/taehowon-seulpeum.png",
+      "https://i.postimg.cc/1t1Y9D7F/taehowon-hwanam.png",
     ],
     themeSongName: "사선 너머",
     themeSongUrl:
@@ -430,14 +430,14 @@ export const CHARACTERS: Character[] = [
       "https://i.postimg.cc/ZRjdHCFR/hanamjin-gippeum.png",
       "https://i.postimg.cc/8PxrZ8Wv/hanamjin-nunmul.png",
       "https://i.postimg.cc/VL2bKyM6/hanamjin-danghwang.png",
-      "https://i.postimg.cc/RV2ngrfH/hanamjin-mupyojeong.png",
+      "https://i.postimg.cc/4xLgN2p7/hanamjin-mupyojeong.png",
       "https://i.postimg.cc/Gh6sX0Yh/hanamjin-seulpeum.png",
       "https://i.postimg.cc/CxDntvH4/hanamjin-hwanam.png",
     ],
     themeSongName: "개새끼",
     themeSongUrl:
       "https://raw.githubusercontent.com/roog24/11/main/%ED%95%98%EB%82%A8%EC%A7%84%20-%20%EA%B0%9C%EC%83%88%EB%81%BC.mp3",
-    quote: '"아, 씨발… 누가 너 죽도록 내버려 둔대?"',
+    quote: '"아, 씨발… 할 말 없으면 꺼져."',
     info: [
       "나이: 20세",
       "신체: 177cm",
@@ -548,7 +548,7 @@ export const CHARACTERS: Character[] = [
     info: [
       "나이: 20세",
       "신체: 177cm",
-      "성향: INFJ, 이기주의자, 소심함",
+      "성향: INTP, 이기주의자",
       "특징: 하남진의 쌍둥이 형. 강약약강의 표본이며 자기중심적 사고를 가짐. 술에 환장함.",
     ],
     secretInfo: [
@@ -634,11 +634,11 @@ export const ZONES: Zone[] = [
     imageUrl: "https://i.postimg.cc/Vv9MTrLw/milae-yeonguso.png",
     description: [
       "세이프 존 내에 위치한 좀비 생체 연구 시설.",
-      "3계급 생존자들 및 변이 중인 감염자들을 대상으로 실험 진행.",
-      "1, 2계급 전용 의료실",
     ],
     visuals: [
-      "투명한 방음 유리벽 너머의 통제된 실험 구역",
+      "A동: 1~2계급 전용 의료실",
+      "B동: 통제된 실험 구역(투명 방음 유리벽). 데이터 분석실(백현우 상주)과 실험실(정해운 상주) 위치.",
+      "실험체/감염자: 1~50호실 B동 수용. 1일 3회 실험. 창문 없는 1인 1실(구속구 침대, 배식구, 카드키 잠금).",
       "지하 병동: 실패작 및 좀비 격리 구역",
     ],
     characterIds: ["baek_hyunwoo", "jung_haewoon"],

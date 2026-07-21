@@ -52,9 +52,6 @@ export default function CharacterThemePlayer({ themeSongName, characterName, cha
       <div className="flex items-center gap-3">
         <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm relative overflow-hidden">
           <Music className="w-4 h-4 text-blue-500" />
-          {isPlaying && (
-            <div className="absolute inset-0 border-2 border-blue-400 rounded-full animate-ping opacity-20"></div>
-          )}
         </div>
         <div>
           <h3 className="text-sm font-bold text-gray-900 truncate max-w-[200px]">

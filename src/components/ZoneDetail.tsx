@@ -97,21 +97,23 @@ export default function ZoneDetail({ zone, onBack, onNavigateToCharacter }: Prop
         </div>
 
         {/* Visuals Section */}
-        <div className="mb-8">
-          <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center">
-            <MapPin className="w-4 h-4 mr-2" />
-            환경 및 특징
-          </h3>
-          <div className="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm">
-            <ul className="space-y-3">
-              {zone.visuals.map((vis, idx) => (
-                <li key={idx} className="text-sm text-gray-800 leading-relaxed pb-3 border-b border-gray-50 last:border-0 last:pb-0">
-                  {vis}
-                </li>
-              ))}
-            </ul>
+        {zone.visuals && zone.visuals.length > 0 && (
+          <div className="mb-8">
+            <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center">
+              <MapPin className="w-4 h-4 mr-2" />
+              환경 및 특징
+            </h3>
+            <div className="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm">
+              <ul className="space-y-3">
+                {zone.visuals.map((vis, idx) => (
+                  <li key={idx} className="text-sm text-gray-800 leading-relaxed pb-3 border-b border-gray-50 last:border-0 last:pb-0">
+                    {vis}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Associated Characters */}
         {chars.length > 0 && (

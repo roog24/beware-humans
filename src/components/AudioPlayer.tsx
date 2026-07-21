@@ -16,7 +16,13 @@ const PLAYLIST = [
     title: c.themeSongName || '테마곡',
     artist: c.name,
     url: c.themeSongUrl!
-  }))
+  })),
+  {
+    id: 'ending',
+    title: '소나기 아래서',
+    artist: '테마곡',
+    url: 'https://raw.githubusercontent.com/roog24/11/main/%EC%86%8C%EB%82%98%EA%B8%B0%20%EC%95%84%EB%9E%98%EC%84%9C%20(Dancing%20in%20the%20Rain).mp3'
+  }
 ];
 
 export default function AudioPlayer() {
@@ -263,9 +269,6 @@ export default function AudioPlayer() {
               <div className="flex items-center gap-4 mb-3">
                 <div className="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center shrink-0 relative overflow-hidden shadow-inner">
                     <Music className="w-5 h-5 text-gray-400" />
-                    {isPlaying && (
-                      <div className="absolute inset-0 border-2 border-blue-500 rounded-full animate-ping opacity-20"></div>
-                    )}
                 </div>
                 
                 <div className="flex flex-col flex-1 min-w-0">
@@ -348,15 +351,7 @@ export default function AudioPlayer() {
                   >
                     <div className="w-6 h-6 flex items-center justify-center shrink-0">
                       {idx === currentTrackIndex ? (
-                        isPlaying ? (
-                          <div className="flex gap-0.5 items-end h-3">
-                            <motion.div animate={{ height: [4, 12, 4] }} transition={{ repeat: Infinity, duration: 1 }} className="w-1 bg-blue-400 rounded-full" />
-                            <motion.div animate={{ height: [8, 4, 8] }} transition={{ repeat: Infinity, duration: 0.8 }} className="w-1 bg-blue-400 rounded-full" />
-                            <motion.div animate={{ height: [4, 10, 4] }} transition={{ repeat: Infinity, duration: 1.2 }} className="w-1 bg-blue-400 rounded-full" />
-                          </div>
-                        ) : (
-                          <Music className="w-3.5 h-3.5 text-blue-400" />
-                        )
+                        <Music className="w-3.5 h-3.5 text-blue-400" />
                       ) : (
                         <span className="text-xs text-gray-500 font-medium">{idx + 1}</span>
                       )}

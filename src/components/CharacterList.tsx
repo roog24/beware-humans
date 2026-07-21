@@ -35,11 +35,11 @@ export default function CharacterList({ onBack, onSelect }: Props) {
             className="flex flex-col items-center cursor-pointer group"
             onClick={() => onSelect(char.id)}
           >
-            <div className={`w-full aspect-square rounded-2xl shadow-sm flex items-center justify-center text-3xl font-bold border border-black/5 transition-transform transform group-hover:scale-95 overflow-hidden ${char.color}`}>
+            <div className={`w-full aspect-[3/4] rounded-2xl shadow-sm flex items-center justify-center text-3xl font-bold border border-black/5 transition-transform transform group-hover:scale-95 overflow-hidden ${char.color}`}>
               {char.imageUrl ? (
-                <img src={char.imageUrl} alt={char.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" loading="lazy" />
+                <img src={char.imageUrl} alt={char.name} className="w-full h-full object-cover object-top" referrerPolicy="no-referrer" loading="lazy" />
               ) : (
-                getInitials(char.name)
+                <div className="w-full h-full flex items-center justify-center">{getInitials(char.name)}</div>
               )}
             </div>
             <div className="mt-2 text-sm font-semibold text-gray-800 text-center">
