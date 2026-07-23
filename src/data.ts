@@ -544,7 +544,7 @@ export const CHARACTERS: Character[] = [
     themeSongUrl:
       "https://raw.githubusercontent.com/roog24/11/main/%ED%95%98%EB%82%A8%EC%A4%80%20-%20%EC%95%85%EB%AA%85%20%EB%86%92%EC%9D%80%20%EB%82%99%EC%9B%90.mp3",
     quote:
-      '"크하하! 내가 바로 이 완벽한 신세계의 주인공이라고! ...히이익, 저리 가.!"',
+      '"크하하! 내가 바로 이 완벽한 신세계의 주인공이라고! ...히이익, 저리 가..!"',
     info: [
       "나이: 20세",
       "신체: 177cm",
