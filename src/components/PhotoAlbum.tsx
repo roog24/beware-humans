@@ -7,86 +7,28 @@ interface Props {
   onBack: () => void;
 }
 
-const CUSTOM_PHOTOS = [
-  { url: "https://i.postimg.cc/QNpHdCnq/gim-yeonho-1.png", characterName: "김연호" },
-  { url: "https://i.postimg.cc/zX83bNsr/gim-yeonho-2.png", characterName: "김연호" },
-  { url: "https://i.postimg.cc/wTg3yzCz/gim-yeonho-3.png", characterName: "김연호" },
-  { url: "https://i.postimg.cc/xTnqJQwf/gim-yeonho-4.png", characterName: "김연호" },
-  { url: "https://i.postimg.cc/65tT2Kkt/gim-yeonho-5.png", characterName: "김연호" },
-  { url: "https://i.postimg.cc/15BXDTS9/gim-yeonho-6.png", characterName: "김연호" },
-
-  { url: "https://i.postimg.cc/SxtKvMJj/bagdoyeong-1.png", characterName: "박도영" },
-  { url: "https://i.postimg.cc/0NMNRywp/bagdoyeong-2.png", characterName: "박도영" },
-  { url: "https://i.postimg.cc/25b5RSZn/bagdoyeong-3.png", characterName: "박도영" },
-  { url: "https://i.postimg.cc/mrzrfgHC/bagdoyeong-4.png", characterName: "박도영" },
-  { url: "https://i.postimg.cc/R0605ZH7/bagdoyeong-5.png", characterName: "박도영" },
-  { url: "https://i.postimg.cc/cJpLsG7q/bagdoyeong-6.png", characterName: "박도영" },
-
-  { url: "https://i.postimg.cc/gjdcZyBs/baeghyeon-u-1.png", characterName: "백현우" },
-  { url: "https://i.postimg.cc/6q0WL7ky/baeghyeon-u-2.png", characterName: "백현우" },
-  { url: "https://i.postimg.cc/44bxTMm6/baeghyeon-u-3.png", characterName: "백현우" },
-  { url: "https://i.postimg.cc/pVYLt7pD/baeghyeon-u-4.png", characterName: "백현우" },
-  { url: "https://i.postimg.cc/NG7jwV54/baeghyeon-u-5.png", characterName: "백현우" },
-  { url: "https://i.postimg.cc/sf9gR8v0/baeghyeon-u-6.png", characterName: "백현우" },
-
-  { url: "https://i.postimg.cc/PrXrf4D1/seoyuha-1.png", characterName: "서유하" },
-  { url: "https://i.postimg.cc/cL6xwLTF/seoyuha-2.png", characterName: "서유하" },
-  { url: "https://i.postimg.cc/HkjYXk3N/seoyuha-3.png", characterName: "서유하" },
-  { url: "https://i.postimg.cc/9QzmZQ1g/seoyuha-4.png", characterName: "서유하" },
-  { url: "https://i.postimg.cc/FH1r3HG8/seoyuha-5.png", characterName: "서유하" },
-  { url: "https://i.postimg.cc/66Dxhzxr/seoyuha-6.png", characterName: "서유하" },
-
-  { url: "https://i.postimg.cc/cJndkkpP/itaeyun-1.png", characterName: "이태윤" },
-  { url: "https://i.postimg.cc/LXk22Y65/itaeyun-2.png", characterName: "이태윤" },
-  { url: "https://i.postimg.cc/ydhssgYZ/itaeyun-3.png", characterName: "이태윤" },
-  { url: "https://i.postimg.cc/DZQnnJy4/itaeyun-4.png", characterName: "이태윤" },
-  { url: "https://i.postimg.cc/W3mTTFbJ/itaeyun-5.png", characterName: "이태윤" },
-  { url: "https://i.postimg.cc/wv5ggyTw/itaeyun-6.png", characterName: "이태윤" },
-
-  { url: "https://i.postimg.cc/NG4BnHnf/jeonghaeun-1.png", characterName: "정해운" },
-  { url: "https://i.postimg.cc/QxYs8rs4/jeonghaeun-2.png", characterName: "정해운" },
-  { url: "https://i.postimg.cc/9FgVmjVL/jeonghaeun-3.png", characterName: "정해운" },
-  { url: "https://i.postimg.cc/mgnxZmyw/jeonghaeun-4.png", characterName: "정해운" },
-  { url: "https://i.postimg.cc/LXQfxDMG/jeonghaeun-5.png", characterName: "정해운" },
-  { url: "https://i.postimg.cc/GtZDCptK/jeonghaeun-6.png", characterName: "정해운" },
-
-  { url: "https://i.postimg.cc/7L0ynGz1/cheong-owol-1.png", characterName: "청오월" },
-  { url: "https://i.postimg.cc/hj0WNkp8/cheong-owol-2.png", characterName: "청오월" },
-  { url: "https://i.postimg.cc/G2jw6Wqz/cheong-owol-3.png", characterName: "청오월" },
-  { url: "https://i.postimg.cc/hj0WNkpb/cheong-owol-4.png", characterName: "청오월" },
-  { url: "https://i.postimg.cc/Kz5SC6Jq/cheong-owol-5.png", characterName: "청오월" },
-  { url: "https://i.postimg.cc/D0ykhxMB/cheong-owol-6.png", characterName: "청오월" },
-
-  { url: "https://i.postimg.cc/brCXwQX1/taehowon-1.png", characterName: "태호원" },
-  { url: "https://i.postimg.cc/2j2NGfq5/taehowon-2.png", characterName: "태호원" },
-  { url: "https://i.postimg.cc/pVqMCt9h/taehowon-3.png", characterName: "태호원" },
-  { url: "https://i.postimg.cc/nV0f2ts9/taehowon-4.png", characterName: "태호원" },
-  { url: "https://i.postimg.cc/bY3fgjGy/taehowon-5.png", characterName: "태호원" },
-  { url: "https://i.postimg.cc/QxCGnn5t/taehowon-6.png", characterName: "태호원" },
-
-  { url: "https://i.postimg.cc/9Fk53tY5/hanamjun-1.png", characterName: "하남준" },
-  { url: "https://i.postimg.cc/mrQ0Hxxw/hanamjun-2.png", characterName: "하남준" },
-  { url: "https://i.postimg.cc/N01WHhhb/hanamjun-3.png", characterName: "하남준" },
-  { url: "https://i.postimg.cc/xdKWzrr6/hanamjun-4.png", characterName: "하남준" },
-  { url: "https://i.postimg.cc/g0vfZ99N/hanamjun-5.png", characterName: "하남준" },
-  { url: "https://i.postimg.cc/76wj1Bwz/hanamjun-6.png", characterName: "하남준" },
-
-  { url: "https://i.postimg.cc/vBX85xRN/hanamjin-1.png", characterName: "하남진" },
-  { url: "https://i.postimg.cc/SRvyv0xr/hanamjin-2.png", characterName: "하남진" },
-  { url: "https://i.postimg.cc/6qm9mspg/hanamjin-3.png", characterName: "하남진" },
-  { url: "https://i.postimg.cc/XqzVzMYD/hanamjin-4.png", characterName: "하남진" },
-  { url: "https://i.postimg.cc/2yKzKpSg/hanamjin-5.png", characterName: "하남진" },
-  { url: "https://i.postimg.cc/y6QYdRy3/hanamjin-6.png", characterName: "하남진" },
-
-  { url: "https://i.postimg.cc/2jc86W79/han-yuhwan-1.png", characterName: "한유환" },
-  { url: "https://i.postimg.cc/pX3WQt7m/han-yuhwan-2.png", characterName: "한유환" },
-  { url: "https://i.postimg.cc/g2k7Vy8n/han-yuhwan-3.png", characterName: "한유환" },
-  { url: "https://i.postimg.cc/BQRS5GyP/han-yuhwan-4.png", characterName: "한유환" },
-  { url: "https://i.postimg.cc/NfZs8wVH/han-yuhwan-5.png", characterName: "한유환" },
-  { url: "https://i.postimg.cc/7Z7xmW83/han-yuhwan-6.png", characterName: "한유환" }
+const CHAR_NAMES = [
+  "서유하", "박도영", "정해운", "백현우", "한유환", "이태윤",
+  "태호원", "청오월", "하남준", "김연호", "하남진"
 ];
 
+const CUSTOM_PHOTOS = CHAR_NAMES.flatMap(name => 
+  [1, 2, 3, 4, 5, 6].map(num => ({
+    url: `https://raw.githubusercontent.com/roog24/11/refs/heads/main/${encodeURIComponent(name)}%20${num}.png`,
+    characterName: name
+  }))
+);
+
 let globalLoadedCount = 1;
+let backgroundInterval: ReturnType<typeof setInterval> | null = null;
+
+if (typeof window !== 'undefined' && !backgroundInterval) {
+  backgroundInterval = setInterval(() => {
+    if (globalLoadedCount < CUSTOM_PHOTOS.length) {
+      globalLoadedCount++;
+    }
+  }, 800);
+}
 
 export default function PhotoAlbum({ onBack }: Props) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -94,15 +36,11 @@ export default function PhotoAlbum({ onBack }: Props) {
   const [loadedImagesCount, setLoadedImagesCount] = useState(globalLoadedCount);
 
   useEffect(() => {
-    if (loadedImagesCount <= CUSTOM_PHOTOS.length) {
-      const timer = setTimeout(() => {
-        const nextCount = loadedImagesCount + 1;
-        globalLoadedCount = Math.max(globalLoadedCount, nextCount);
-        setLoadedImagesCount(prev => Math.max(prev, nextCount));
-      }, 800);
-      return () => clearTimeout(timer);
-    }
-  }, [loadedImagesCount]);
+    const timer = setInterval(() => {
+      setLoadedImagesCount(globalLoadedCount);
+    }, 200);
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     if (selectedIndex !== null) {
@@ -225,7 +163,7 @@ export default function PhotoAlbum({ onBack }: Props) {
                 >
                   {/* Top Bar */}
                   <div className="absolute top-0 inset-x-0 p-4 flex justify-between items-start bg-gradient-to-b from-black/50 to-transparent">
-                    <div className="text-gray-900/90 font-medium text-sm bg-black/40 px-3 py-1.5 rounded-full backdrop-blur-md pointer-events-auto">
+                    <div className="text-white font-medium text-sm bg-black/40 px-3 py-1.5 rounded-full backdrop-blur-md pointer-events-auto">
                       {allPhotos[selectedIndex].characterName} ({selectedIndex + 1} / {allPhotos.length})
                     </div>
                     <button 
